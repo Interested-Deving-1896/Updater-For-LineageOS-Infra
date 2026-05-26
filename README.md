@@ -1,55 +1,75 @@
-LineageOS Updater Backend
-=======================
-Copyright (c) 2017 The LineageOS Project<br>
+[update-readmes]   Mode: rewrite — migrating to template structure...
+# Updater-For-LineageOS-Infra
 
-Adding a new device
----
-1. Add your device to devices.json, sorted alphanumerically by codename. Fields are documented below.
-2. Submit your change to gerrit (this repository is configured for use with `git review`)
+[![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/Updater-For-LineageOS-Infra)
 
-### devices.json
-devices.json is an array of objects, each with several fields:
+<!-- AI:start:what-it-does -->
+_Description pending._
+<!-- AI:end:what-it-does -->
 
-* `model`: should be the first thing on the line, and is the device's codename (`PRODUCT_DEVICE`) - e.g. `i9300`.
-* `oem`: the manufacturer of the device. (`PRODUCT_BRAND`) - e.g. `Samsung`.
-* `name`: the user-friendly name of the device - e.g. `Galaxy S III (Intl)`. Long values will overflow and look bad,
-so limit this to around 25 characters.
-* `has_recovery`: (*optional*) whether or not the device has a separate recovery partition. Defaults to `true`.
-* `lineage_recovery`: (*optional*) whether or not to offer Lineage recovery downloads for this device. Defaults to `true`.
+## Architecture
 
-Development set up:
----
-1. Install requirements with `pip install -r requirements.txt`
-2. Configure your environment appropriately - see `config.py` for possible variables.
-3. Supply a device_deps.json, devices.json, and optional devices_local.json. (See https://github.com/LineageOS/hudson/tree/main/updater for example) 
-4. Run with `FLASK_APP=app.py flask run`
+<!-- AI:start:architecture -->
+_Architecture documentation pending._
+<!-- AI:end:architecture -->
 
+## Install
 
-Example API Calls:
----
-Obtaining rom list for a device:<br>
-`GET /api/v1/<device>/<romtype>/<incremental>?after=<utc_timestamp>&version=<14.1>` (incremental can be anything, it is currently unused)<br>
-`<device>` - Name of device. Example: `d2vzw`<br>
-`<romtype>` - Type of rom. Example: `nightly`<br>
-`<incremental>` - Caller device's incremental ID (ro.build.incr). Can be anything. <br>
-`<after>` - Timestamp for current build on device. (optional) <br>
-`<romversion>` - Version of rom. Example: `14.1`(optional)<br>
+<!-- Add installation instructions here. This section is yours — the AI will not modify it. -->
 
+```bash
+git clone https://github.com/Interested-Deving-1896/Updater-For-LineageOS-Infra.git
+cd Updater-For-LineageOS-Infra
+```
 
-This project depends on a mirrorbits server (https://github.com/etix/mirrorbits) running our mirrorbits API (https://github.com/lineageos-infra/mirrorbits-api). Please see the README in that project for more information.
+## Usage
 
-Don't want to run mirrorbits/mirrorbits-api?
----
-To run the server stand-alone you can use the included `docker-compose` script to bring up a simple nginx server to host your builds for you.  
+<!-- Add usage examples here. This section is yours — the AI will not modify it. -->
 
-### Setup
-1. Place your builds in `./nginx/builds/`. These will be exposed on http://example.com/builds when you start the server. They don't need to be android builds, just make sure they have differing sha256s and match the filename format foobar-VERSION-BUILDDATE-BUILDTYPE-DEVICE-foobar.zip.
-2. Run `python gen_mirror_json.py ./nginx/builds > ./nginx/builds.json`
-3. Make sure you have device_deps.json, devices.json, and optional devices_local.json in the root directory of this repo.
-4. Install `docker-compose` on your system.
-5. Make sure that `docker-compose.yml` and `./nginx/default.conf` use suitable hostnames for your setup (rather than "updater" and "nginx", you should use the address of the computer running docker).
+## Configuration
 
-### Building and Running
-1. To build, use `docker-compose build` in the root of the repo.
-2. To start the server, run `docker-compose up` in the root of the repo (include a `-d` flag to run in detached mode)
-3. To stop the server, run `docker-compose down` in the root of the repo.
+<!-- Document configuration options here. This section is yours — the AI will not modify it. -->
+
+## CI
+
+<!-- AI:start:ci -->
+_CI documentation pending._
+<!-- AI:end:ci -->
+
+## Mirror chain
+
+<!-- AI:start:mirror-chain -->
+This repo is maintained in [`Interested-Deving-1896/Updater-For-LineageOS-Infra`](https://github.com/Interested-Deving-1896/Updater-For-LineageOS-Infra) and mirrored through:
+
+```
+Interested-Deving-1896/Updater-For-LineageOS-Infra  ──►  OpenOS-Project-OSP/Updater-For-LineageOS-Infra  ──►  OpenOS-Project-Ecosystem-OOC/Updater-For-LineageOS-Infra
+```
+
+Changes flow downstream automatically via the hourly mirror chain in
+[`fork-sync-all`](https://github.com/Interested-Deving-1896/fork-sync-all).
+Direct commits to OSP or OOC are detected and opened as PRs back to `Interested-Deving-1896`.
+<!-- AI:end:mirror-chain -->
+
+## Contributors
+
+<!-- AI:start:contributors -->
+_Contributors pending._
+<!-- AI:end:contributors -->
+
+## Origins
+
+<!-- AI:start:origins -->
+_Original project — no upstream fork._
+<!-- AI:end:origins -->
+
+## Resources
+
+<!-- AI:start:resources -->
+_No additional resource files found._
+<!-- AI:end:resources -->
+
+## License
+
+<!-- AI:start:license -->
+<!-- License not detected — add a LICENSE file to this repo. -->
+<!-- AI:end:license -->
